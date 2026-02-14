@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alan ❤️ Nadiva</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #7b1c2d, #ff6f91);
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* LOGIN */
+#login {
+  text-align: center;
+  background: rgba(255,255,255,0.15);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+input {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  margin-top: 10px;
+  text-align: center;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  background: #ff2d75;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ff5a9e;
+}
+
+#content {
+  display: none;
+  text-align: center;
+  padding: 25px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 2s ease;
+  max-width: 90%;
+}
+
+.photos {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.photos img {
+  width: 130px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 3px solid white;
+}
+
+#letter {
+  margin-top: 15px;
+  display: none;
+}
+
+.heart {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: pink;
+  transform: rotate(45deg);
+  animation: floatUp 7s linear infinite;
+  opacity: 0.8;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: pink;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -9px;
+  left: 0;
+}
+
+.heart::after {
+  left: -9px;
+  top: 0;
+}
+
+@keyframes floatUp {
+  0% {transform: translateY(100vh) rotate(45deg);}
+  100% {transform: translateY(-10vh) rotate(45deg);}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+</style>
+</head>
+<body>
+
+<div id="login">
+  <h2>🔐 Masukkan Password</h2>
+  <input type="password" id="password" placeholder="password cinta 💔">
+  <br>
+  <button onclick="checkPassword()">Masuk</button>
+</div>
+
+<div id="content">
+  <h1 style="font-family:Pacifico;">Happy Valentine’s Day ❤️</h1>
+  <h3>Alan Ardilah & Nadiva Ghelby</h3>
+
+  <div class="photos">
+    <img src="photo1.jpg" alt="Photo 1">
+    <img src="photo2.jpg" alt="Photo 2">
+  </div>
+
+  <p style="margin-top:10px;">Kisah kita mungkin nggak sempurna, tapi selalu berarti</p>
+
+  <button onclick="showLetter()">💌 Buka Surat Cinta</button>
+
+  <div id="letter">
+    <p>
+      Dear Nadiva Ghelby,<br><br>
+      Mungkin aku bukan orang paling hebat di hidup kamu,<br>
+      tapi perasaanku ke kamu selalu paling sungguh.<br><br>
+
+      Ada hari-hari di mana aku takut kehilangan kamu,<br>
+      bukan karena aku nggak percaya,<br>
+      tapi karena kamu terlalu berharga untuk aku relakan begitu saja.<br><br>
+
+      Kalau suatu hari kamu lelah,<br>
+      ingatlah… ada seseorang yang masih memilih kamu,<br>
+      bahkan saat dunia terasa berat.<br><br>
+
+      Terima kasih sudah pernah menjadi bagian terindah di hidupku.<br>
+      Kalau cinta itu doa,<br>
+      maka namamu selalu ada di dalamnya.<br><br>
+
+      Aku cinta kamu…<br>
+      dalam cara yang mungkin nggak selalu terlihat,<br>
+      tapi selalu terasa. ❤️<br><br>
+
+      – Alan Ardilah
+    </p>
+  </div>
+
+  <footer style="margin-top:10px;">Made with ❤️ by Alan for Nadiva</footer>
+</div>
+
+<audio id="bgm" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_48d3c64f63.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const correctPassword = "bya alan ganteng";
+
+function checkPassword() {
+  const input = document.getElementById("password").value;
+  if (input === correctPassword) {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("content").style.display = "block";
+    document.getElementById("bgm").play();
+  } else {
+    alert("Password salah 😢");
+  }
+}
+
+function showLetter() {
+  document.getElementById("letter").style.display = "block";
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
